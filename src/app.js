@@ -30,15 +30,14 @@ class App extends Component {
 
   newGame = (height, width) => {
     let size = height * width,
-      board = new Array(size),
-      sl = new Array(size / 2); //array of 50 elements
+      board = new Array(size);
       var n,
       r = [];
     for (let i = 0; i < board.length; ++i) board[i] = i;
     let bl = JSON.parse(JSON.stringify(board));// it's 0to99 for 10*10 array
     let mid = Math.round(Math.abs((size - 1) / 2)); //50
     bl.splice(mid, 1); //removes one element at the index of mid i.e remove 50 from 0 to 99
-    for (n = 1; n <= sl.length; ++n) {
+    for (n = 1; n <= height; ++n) { //we can change n range to generate the number of spirits
       var i = Math.floor(Math.random() * (bl.length - n) + 1); //for generating 50 random sprits
       r.push(bl[i]);  //generating 50 random sprits
       bl.splice(i, 1); //remove than random number from bl 
